@@ -13,12 +13,14 @@ type Itinerary = {
 const itinDir = path.join(process.cwd(), 'content', 'itinerary');
 
 export async function generateStaticParams() {
-  const files = fs.readdirSync(itinDir).filter(f => f.endsWith('.json'));
-  return files.map(f => ({ day: f.replace(/^day-(\\d+)\\.json$/, '$1') }));
+  const files = fs.readdirSync(itinDir).filter((f) => f.endsWith('.json'));
+  return files.map((f) => ({ day: f.replace(/^day-(\d+)\.json$/, '$1') }));
 }
 
 export default function ItineraryDayPage({ params }: { params: { day: string } }) {
-  const file = path.join(itinDir, `day-${params.day}.json`);
+  const raw = String(params.day);
+  const day = (/^\d+$/.test(raw) ? raw : (raw.match(/(\d+)/)?.[1] ?? raw));
+  const file = path.join(itinDir, `day-${day}.json`);
   const itin = JSON.parse(fs.readFileSync(file, 'utf8')) as Itinerary;
   return (
     <main className="p-6 space-y-2">
@@ -34,11 +36,12 @@ export default function ItineraryDayPage({ params }: { params: { day: string } }
 }
 
 export function generateMetadata({ params }: { params: { day: string } }): Metadata {
-  const file = path.join(itinDir, `day-${params.day}.json`);
+  const raw = String(params.day);
+  const day = (/^\d+$/.test(raw) ? raw : (raw.match(/(\d+)/)?.[1] ?? raw));
+  const file = path.join(itinDir, `day-${day}.json`);
   const j = JSON.parse(fs.readFileSync(file, 'utf8')) as { title_ja: string };
   return {
-    title: `Day ${params.day}: ${j.title_ja} | Itinerary`,
-    description: `Day ${params.day} の行程ページです。訪問順とリンクを確認できます。`,
+    title: `Day ${day}: ${j.title_ja} | Itinerary`,
+    description: `Day ${day} の行程ページです。訪問順とリンクを確認できます。`,
   };
 }
-
