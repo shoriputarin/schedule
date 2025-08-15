@@ -6,8 +6,7 @@
   "lat": 44.4268,
   "lng": 26.1025,
   "summary_ja": "東欧の小パリ。旧市街や国民の館が見どころ。",
-  "summary_en": "Little Paris of the East. Highlights include the Palace of the Parliament and the Old Town.
-",
+  "summary_en": "Little Paris of the East. Highlights include the Palace of the Parliament and the Old Town.",
   "highlights_ja": ["国民の館", "旧市街散策", "カフェ文化"],
   "highlights_en": ["Palace of the Parliament", "Old Town walk", "Cafe culture"],
   "media": [
@@ -15,4 +14,3 @@
     { "type": "url", "src": "https://en.wikipedia.org/wiki/Bucharest", "title": "Wikipedia", "alt": "Bucharest Wikipedia" }
   ]
 }
-
