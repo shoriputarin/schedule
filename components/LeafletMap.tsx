@@ -1,5 +1,7 @@
 "use client";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+// @ts-ignore - library has no types by default
+import MarkerClusterGroup from 'react-leaflet-cluster';
 import L from 'leaflet';
 // Ensure default icon works in Next.js by explicitly setting URLs
 import iconUrl from 'leaflet/dist/images/marker-icon.png';
@@ -41,32 +43,54 @@ export default function LeafletMap({ spots }: { spots: SpotPin[] }) {
   return (
     <MapContainer center={center} zoom={zoom} style={{ height: '70vh', width: '100%' }}>
       <TileLayer url={tileUrl} attribution='&copy; OpenStreetMap contributors' />
-      {spots.map((s) => (
-        <Marker key={s.slug} position={[s.lat, s.lng]}>
-          <Popup>
-            <div>
-              <strong>{s.name_ja}</strong>
+      <MarkerClusterGroup
+        chunkedLoading
+        maxClusterRadius={50}
+        iconCreateFunction={(cluster) => {
+          const count = cluster.getChildCount();
+          // Derive a color from the majority day among child markers if available
+          // Fallback to gray.
+          let color = '#6b7280';
+          try {
+            const markers = cluster.getAllChildMarkers() as any[];
+            const dayCount: Record<number, number> = {};
+            markers.forEach((m: any) => {
+              const d = m?.options?.day as number | undefined;
+              if (typeof d === 'number') dayCount[d] = (dayCount[d] || 0) + 1;
+            });
+            const top = Object.entries(dayCount).sort((a, b) => b[1] - a[1])[0];
+            if (top) color = dayColors[Number(top[0])] || color;
+          } catch {}
+          const html = `<div style="background:${color};color:#fff;border-radius:9999px;display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,0.15);">${count}</div>`;
+          return new L.DivIcon({ html, className: 'cluster-icon', iconSize: [36, 36] });
+        }}
+      >
+        {spots.map((s) => (
+          <Marker key={s.slug} position={[s.lat, s.lng]} {...{ day: s.day }}>
+            <Popup>
               <div>
-                <a className="text-blue-600 underline" href={`/spots/${s.slug}`}>詳細を見る</a>
+                <strong>{s.name_ja}</strong>
+                <div>
+                  <a className="text-blue-600 underline" href={`/spots/${s.slug}`}>詳細を見る</a>
+                </div>
+                <span
+                  style={{
+                    display: 'inline-block',
+                    marginTop: 6,
+                    padding: '2px 6px',
+                    borderRadius: 4,
+                    background: dayColors[s.day] || '#6b7280',
+                    color: '#fff',
+                    fontSize: 12,
+                  }}
+                >
+                  Day {s.day}
+                </span>
               </div>
-              <span
-                style={{
-                  display: 'inline-block',
-                  marginTop: 6,
-                  padding: '2px 6px',
-                  borderRadius: 4,
-                  background: dayColors[s.day] || '#6b7280',
-                  color: '#fff',
-                  fontSize: 12,
-                }}
-              >
-                Day {s.day}
-              </span>
-            </div>
-          </Popup>
-        </Marker>
-      ))}
+            </Popup>
+          </Marker>
+        ))}
+      </MarkerClusterGroup>
     </MapContainer>
   );
 }
-
