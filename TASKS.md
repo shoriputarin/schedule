@@ -18,8 +18,8 @@
 5. 依存をインストールする（npm/pnpm）
 6. Leaflet関連パッケージを導入する（`leaflet`, `react-leaflet`, `react-leaflet-cluster`）
 7. マップコンポーネントを追加し、ホーム(`/`)にスポットのピンを表示する
-8. `next-sitemap` 追加と設定（sitemap/robots生成）
-9. CI（GitHub Actions）で lint/type-check/build 実行を追加
+8. `next-sitemap` 追加と設定（sitemap/robots生成）【完了】
+9. CI（GitHub Actions）で type-check/build/validate 実行を追加【完了】
 10. Zodスキーマ導入（簡易バリデータから置換）
 
 必要に応じて、このファイルに追記・更新していきます。
