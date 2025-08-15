@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import Image from 'next/image';
+export const runtime = 'nodejs';
 
 type Media = { type: 'image' | 'youtube' | 'url'; src: string; title?: string; alt: string };
 type Spot = {

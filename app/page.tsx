@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import dynamic from 'next/dynamic';
 import type { Metadata } from 'next';
+export const runtime = 'nodejs';
 
 const LeafletMap = dynamic(() => import('../components/LeafletMap'), { ssr: false });
 

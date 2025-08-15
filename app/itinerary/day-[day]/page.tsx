@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import type { Metadata } from 'next';
+export const runtime = 'nodejs';
 
 type Itinerary = {
   day: number;
