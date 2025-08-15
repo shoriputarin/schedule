@@ -39,11 +39,12 @@ export default function SpotPage({ params }: { params: { slug: string } }) {
   const resolvedMedia = spot.media?.map((m) => {
     if (m.type !== 'image') return m;
     const src = m.src.startsWith('/') ? m.src : `/${m.src}`;
-    const target = path.join(publicDir, src);
+    const rel = src.replace(/^\//, '');
+    const target = path.join(publicDir, rel);
     if (!fs.existsSync(target)) {
       return { ...m, src: '/images/placeholder.svg' };
     }
-    return m;
+    return { ...m, src };
   }) ?? [];
 
   return (
@@ -56,9 +57,14 @@ export default function SpotPage({ params }: { params: { slug: string } }) {
       <section className="grid gap-4 md:grid-cols-2">
         {resolvedMedia.map((m, idx) => {
           if (m.type === 'image') {
+            const isSvg = m.src.toLowerCase().endsWith('.svg');
             return (
               <figure key={idx} className="rounded border p-2 bg-white">
-                <Image src={m.src} alt={m.alt} width={800} height={450} className="w-full h-auto rounded" />
+                {isSvg ? (
+                  <img src={m.src} alt={m.alt} width={800} height={450} className="w-full h-auto rounded" />
+                ) : (
+                  <Image src={m.src} alt={m.alt} width={800} height={450} className="w-full h-auto rounded" />
+                )}
                 {m.title ? <figcaption className="text-sm text-gray-600 mt-1">{m.title}</figcaption> : null}
               </figure>
             );
