@@ -14,7 +14,7 @@ const itinDir = path.join(process.cwd(), 'content', 'itinerary');
 
 export async function generateStaticParams() {
   const files = fs.readdirSync(itinDir).filter(f => f.endsWith('.json'));
-  return files.map(f => ({ day: f.replace(/^day-(\d+)\.json$/, '$1') }));
+  return files.map(f => ({ day: f.replace(/^day-(\\d+)\\.json$/, '$1') }));
 }
 
 export default function ItineraryDayPage({ params }: { params: { day: string } }) {
@@ -41,3 +41,4 @@ export function generateMetadata({ params }: { params: { day: string } }): Metad
     description: `Day ${params.day} の行程ページです。訪問順とリンクを確認できます。`,
   };
 }
+

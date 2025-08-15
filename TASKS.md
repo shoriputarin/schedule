@@ -25,6 +25,7 @@
 12. スポット詳細で `media[]` を表示（`next/image` を使用し、プレースホルダにフォールバック）
 12.1. カスタムマーカーアイコン（Day色のピン）を作成して実装【完了】
 13. 各ルートの `metadata` を整備（title/description）【完了（ホーム/日別/スポット）】
+15. ルーティング整備: `app/itinerary/day-[day]` → `app/itinerary/[day]` に修正【完了】
 14. GitHub Variables に `NEXT_PUBLIC_SITE_URL` を設定（CIのsitemap用）
 
 必要に応じて、このファイルに追記・更新していきます。
