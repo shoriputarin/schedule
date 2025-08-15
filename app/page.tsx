@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import dynamic from 'next/dynamic';
+import type { Metadata } from 'next';
 
 const LeafletMap = dynamic(() => import('../components/LeafletMap'), { ssr: false });
 
@@ -27,3 +28,8 @@ export default function HomePage() {
     </main>
   );
 }
+
+export const metadata: Metadata = {
+  title: 'ルーマニア旅行マップ | Romania Trip Map',
+  description: 'スポットの位置を地図で確認し、詳細ページへ移動できます。',
+};

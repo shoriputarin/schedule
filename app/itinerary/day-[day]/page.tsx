@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import type { Metadata } from 'next';
 
 type Itinerary = {
   day: number;
@@ -31,3 +32,11 @@ export default function ItineraryDayPage({ params }: { params: { day: string } }
   );
 }
 
+export function generateMetadata({ params }: { params: { day: string } }): Metadata {
+  const file = path.join(itinDir, `day-${params.day}.json`);
+  const j = JSON.parse(fs.readFileSync(file, 'utf8')) as { title_ja: string };
+  return {
+    title: `Day ${params.day}: ${j.title_ja} | Itinerary`,
+    description: `Day ${params.day} の行程ページです。訪問順とリンクを確認できます。`,
+  };
+}
