@@ -8,7 +8,7 @@
 - [x] Node/Next.js向け `.gitignore` の追加（完了）
 - [x] コンテンツ雛形の作成（`content/spots`, `content/itinerary` サンプル）
 - [x] データ検証の下準備（簡易バリデータ追加 / Zodは後続）
-- [ ] Next.js 初期セットアップ（TypeScript, Tailwind など）
+- [x] Next.js 初期セットアップ（TypeScript, Tailwind など）
 
 ## 実行順序（MVPまで）
 1. Node/Next.js 用 `.gitignore` を追加する（完了）
