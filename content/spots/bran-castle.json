@@ -1,0 +1,17 @@
+{
+  "slug": "bran-castle",
+  "name_ja": "ブラン城",
+  "name_en": "Bran Castle",
+  "day": 3,
+  "lat": 45.5153,
+  "lng": 25.3670,
+  "summary_ja": "ドラキュラ城として知られる有名な城。",
+  "summary_en": "Famous castle often associated with Dracula.",
+  "highlights_ja": ["拷問器具の展示", "隠し階段"],
+  "highlights_en": ["Exhibition of torture instruments", "Secret staircase"],
+  "media": [
+    { "type": "image", "src": "/images/bran-castle/main.jpg", "title": "ブラン城の外観", "alt": "ブラン城の外観の写真" },
+    { "type": "youtube", "src": "YOUTUBE_VIDEO_ID", "title": "ブラン城のドローン映像", "alt": "ブラン城の空撮動画" }
+  ]
+}
+

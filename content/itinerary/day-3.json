@@ -1,0 +1,11 @@
+{
+  "day": 3,
+  "title_ja": "トランシルヴァニア観光",
+  "title_en": "Transylvania Sightseeing",
+  "order": ["bran-castle", "brasov"],
+  "route": {
+    "type": "LineString",
+    "coordinates": [[25.3670, 45.5153], [25.5886, 45.6433]]
+  }
+}
+

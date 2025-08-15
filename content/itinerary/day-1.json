@@ -1,0 +1,11 @@
+{
+  "day": 1,
+  "title_ja": "ブカレスト到着日",
+  "title_en": "Arrival in Bucharest",
+  "order": ["bucharest"],
+  "route": {
+    "type": "LineString",
+    "coordinates": [[26.1025, 44.4268]]
+  }
+}
+

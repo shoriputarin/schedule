@@ -1,0 +1,16 @@
+{
+  "slug": "brasov",
+  "name_ja": "ブラショフ",
+  "name_en": "Brașov",
+  "day": 3,
+  "lat": 45.6433,
+  "lng": 25.5886,
+  "summary_ja": "中世の雰囲気が残る美しい街並み。黒の教会が有名。",
+  "summary_en": "Charming medieval town known for the Black Church.",
+  "highlights_ja": ["黒の教会", "共和国通り散策"],
+  "highlights_en": ["Black Church", "Republicii Street"],
+  "media": [
+    { "type": "image", "src": "/images/brasov/old-town.jpg", "title": "旧市街", "alt": "ブラショフ旧市街の写真" }
+  ]
+}
+
