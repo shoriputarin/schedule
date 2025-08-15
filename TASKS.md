@@ -27,5 +27,6 @@
 13. 各ルートの `metadata` を整備（title/description）【完了（ホーム/日別/スポット）】
 15. ルーティング整備: `app/itinerary/day-[day]` → `app/itinerary/[day]` に修正【完了】
 14. GitHub Variables に `NEXT_PUBLIC_SITE_URL` を設定（CIのsitemap用）
+16. プレビュー環境のインデックス制御（`X-Robots-Tag: noindex, nofollow` を付与）【完了】
 
 必要に応じて、このファイルに追記・更新していきます。
