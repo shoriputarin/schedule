@@ -22,5 +22,8 @@
 9. CI（GitHub Actions）で type-check/build/validate 実行を追加【完了】
 10. Zodスキーマ導入（簡易バリデータから置換）【完了】
 11. 画像最適化: Next.js の推奨パッケージ `sharp` を導入する（本番最適化向け）【完了】
+12. スポット詳細で `media[]` を表示（`next/image` を使用し、プレースホルダにフォールバック）
+13. 各ルートの `metadata` を整備（title/description）
+14. GitHub Variables に `NEXT_PUBLIC_SITE_URL` を設定（CIのsitemap用）
 
 必要に応じて、このファイルに追記・更新していきます。
