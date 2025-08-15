@@ -3,16 +3,6 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 // @ts-ignore - library has no types by default
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import L from 'leaflet';
-// Ensure default icon works in Next.js by explicitly setting URLs
-import iconUrl from 'leaflet/dist/images/marker-icon.png';
-import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
-import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
-
-L.Icon.Default.mergeOptions({
-  iconUrl,
-  iconRetinaUrl,
-  shadowUrl,
-});
 
 type SpotPin = {
   slug: string;
@@ -33,6 +23,22 @@ const dayColors: Record<number, string> = {
   2: '#3b82f6', // blue
   3: '#22c55e', // green
 };
+
+function getMarkerIcon(day: number) {
+  const file = day === 1
+    ? '/icons/marker-day-1.svg'
+    : day === 2
+    ? '/icons/marker-day-2.svg'
+    : day === 3
+    ? '/icons/marker-day-3.svg'
+    : '/icons/marker-day-0.svg';
+  return L.icon({
+    iconUrl: file,
+    iconSize: [32, 44],
+    iconAnchor: [16, 44],
+    popupAnchor: [0, -38],
+  });
+}
 
 export default function LeafletMap({ spots }: { spots: SpotPin[] }) {
   // Romania approximate center
@@ -66,7 +72,7 @@ export default function LeafletMap({ spots }: { spots: SpotPin[] }) {
         }}
       >
         {spots.map((s) => (
-          <Marker key={s.slug} position={[s.lat, s.lng]} {...{ day: s.day }}>
+          <Marker key={s.slug} position={[s.lat, s.lng]} icon={getMarkerIcon(s.day)} {...{ day: s.day }}>
             <Popup>
               <div>
                 <strong>{s.name_ja}</strong>

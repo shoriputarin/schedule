@@ -23,6 +23,7 @@
 10. Zodスキーマ導入（簡易バリデータから置換）【完了】
 11. 画像最適化: Next.js の推奨パッケージ `sharp` を導入する（本番最適化向け）【完了】
 12. スポット詳細で `media[]` を表示（`next/image` を使用し、プレースホルダにフォールバック）
+12.1. カスタムマーカーアイコン（Day色のピン）を作成して実装【完了】
 13. 各ルートの `metadata` を整備（title/description）【完了（ホーム/日別/スポット）】
 14. GitHub Variables に `NEXT_PUBLIC_SITE_URL` を設定（CIのsitemap用）
 
